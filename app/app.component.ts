@@ -22,7 +22,7 @@ import { OnInit } from 'angular2/core';
 <!-- start => Seccion 9 : Connecting to the Server  -->
     <div *ngIf="isLoading">
         <i class="fa fa-spinner fa-spin fa-3x"></i>
-    </div>
+    </div> 
    
     `,
     directives: [AdventuresRxComponent],
