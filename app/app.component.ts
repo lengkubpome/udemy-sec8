@@ -8,6 +8,8 @@ import { AdventuresRxComponent } from './adventures-rx.component';
 import { PostService } from './seccion9/post.service';
 import {HTTP_PROVIDERS}from 'angular2/http'
 
+import { OnInit } from 'angular2/core';
+
 @Component({
     selector: 'my-app',
     template: `
@@ -18,7 +20,9 @@ import {HTTP_PROVIDERS}from 'angular2/http'
                 <adventures-rx></adventures-rx>
 
 <!-- start => Seccion 9 : Connecting to the Server  -->
-
+    <div *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin fa-3x"></i>
+    </div>
    
     `,
     directives: [AdventuresRxComponent],
@@ -28,8 +32,14 @@ import {HTTP_PROVIDERS}from 'angular2/http'
 
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+    isLoading = true;
+
+
     constructor(private _postService: PostService) {
+
+        //start => Seccion 9 : Connecting to the Server
+        // this._postService.createPost({userId:1,title:"a",body:"b"});
 
         //start => Seccion 8 : Introduction to Reactive Extensions
         console.log(new Observable());
@@ -62,9 +72,15 @@ export class AppComponent {
         //     debounce(text);
         // });
 
+    }
+
+    ngOnInit(){
         //start => Seccion 9 : Connecting to the Server
         this._postService.getPosts()
-            .subscribe(posts => console.log(posts));
+            .then(posts =>{
+                this.isLoading = false;
+                console.log(posts[0].userId)
+            });
 
 
     }

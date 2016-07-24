@@ -33,7 +33,10 @@ System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './sec
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(_postService) {
+                    //start => Seccion 9 : Connecting to the Server
+                    // this._postService.createPost({userId:1,title:"a",body:"b"});
                     this._postService = _postService;
+                    this.isLoading = true;
                     //start => Seccion 8 : Introduction to Reactive Extensions
                     console.log(new Rx_1.Observable());
                     var keyup = Rx_1.Observable.fromEvent($("#search"), "keyup")
@@ -61,14 +64,20 @@ System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './sec
                     //         return;
                     //     debounce(text);
                     // });
+                }
+                AppComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     //start => Seccion 9 : Connecting to the Server
                     this._postService.getPosts()
-                        .subscribe(function (posts) { return console.log(posts); });
-                }
+                        .then(function (posts) {
+                        _this.isLoading = false;
+                        console.log(posts[0].userId);
+                    });
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n<!-- start => Seccion 8 : Introduction to Reactive Extensions  -->\n        <h4>Chapter 80+ : Reaction</h4>\n                <input id=\"search\" type=\"text\" class=\"form-control\" placeholder=\"Search for artists...\">\n                <br>\n                <adventures-rx></adventures-rx>\n\n<!-- start => Seccion 9 : Connecting to the Server  -->\n\n   \n    ",
+                        template: "\n<!-- start => Seccion 8 : Introduction to Reactive Extensions  -->\n        <h4>Chapter 80+ : Reaction</h4>\n                <input id=\"search\" type=\"text\" class=\"form-control\" placeholder=\"Search for artists...\">\n                <br>\n                <adventures-rx></adventures-rx>\n\n<!-- start => Seccion 9 : Connecting to the Server  -->\n    <div *ngIf=\"isLoading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n    </div>\n   \n    ",
                         directives: [adventures_rx_component_1.AdventuresRxComponent],
                         providers: [post_service_1.PostService, http_1.HTTP_PROVIDERS]
                     }), 

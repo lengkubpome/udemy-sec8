@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Rx';
 
 import { ControlGroup, FormBuilder } from 'angular2/common';
 
+import { PostService } from './seccion9/post.service';
+
 @Component({
     selector: 'adventures-rx',
     template: `
@@ -18,8 +20,8 @@ export class AdventuresRxComponent {
 
     form: ControlGroup;
 
-
     constructor(fb: FormBuilder) {
+
         // Example 1 : Creating an observable from DOM events
         this.form = fb.group({
             search_rx: []
