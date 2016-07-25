@@ -1,5 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
-System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './seccion9/post.service', 'angular2/http'], function(exports_1, context_1) {
+System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './seccion9/post.service', 'angular2/http', './seccion9/github-profile.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './sec
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx_1, adventures_rx_component_1, post_service_1, http_1;
+    var core_1, Rx_1, adventures_rx_component_1, post_service_1, http_1, github_profile_component_1;
     var AppComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './sec
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (github_profile_component_1_1) {
+                github_profile_component_1 = github_profile_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -77,8 +80,8 @@ System.register(['angular2/core', 'rxjs/Rx', './adventures-rx.component', './sec
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n<!-- start => Seccion 8 : Introduction to Reactive Extensions  -->\n        <h4>Chapter 80+ : Reaction</h4>\n                <input id=\"search\" type=\"text\" class=\"form-control\" placeholder=\"Search for artists...\">\n                <br>\n                <adventures-rx></adventures-rx>\n\n<!-- start => Seccion 9 : Connecting to the Server  -->\n    <div *ngIf=\"isLoading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n    </div>\n   \n    ",
-                        directives: [adventures_rx_component_1.AdventuresRxComponent],
+                        template: "\n<!-- start => Seccion 8 : Introduction to Reactive Extensions  -->\n        <h4>Chapter 80+ : Reaction</h4>\n                <input id=\"search\" type=\"text\" class=\"form-control\" placeholder=\"Search for artists...\">\n                <br>\n                <adventures-rx></adventures-rx>\n\n<!-- start => Seccion 9 : Connecting to the Server  -->\n    <div *ngIf=\"isLoading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n    </div> \n\n    <github-profile></github-profile>\n   \n    ",
+                        directives: [adventures_rx_component_1.AdventuresRxComponent, github_profile_component_1.GitHubProfileComponent],
                         providers: [post_service_1.PostService, http_1.HTTP_PROVIDERS]
                     }), 
                     __metadata('design:paramtypes', [post_service_1.PostService])

@@ -10,6 +10,8 @@ import {HTTP_PROVIDERS}from 'angular2/http'
 
 import { OnInit } from 'angular2/core';
 
+import {GitHubProfileComponent} from './seccion9/github-profile.component'
+
 @Component({
     selector: 'my-app',
     template: `
@@ -23,9 +25,11 @@ import { OnInit } from 'angular2/core';
     <div *ngIf="isLoading">
         <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div> 
+
+    <github-profile></github-profile>
    
     `,
-    directives: [AdventuresRxComponent],
+    directives: [AdventuresRxComponent , GitHubProfileComponent],
     providers: [PostService, HTTP_PROVIDERS]
 
 
